@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity implements OnEditorActionLi
                 String userNameString = userNameEditText.getText().toString();
                 String passwordString = passwordEditText.getText().toString();
                 if(!userNameString.equals("username")){
-                    text = "Login Failed - Invalid Username";
+                    text = "Login Failed - Invalid Usernamejjj";
                     toast = Toast.makeText(context, text, duration);
                     toast.setGravity(Gravity.CENTER | Gravity.BOTTOM, 0, 100);
                     toast.show();
