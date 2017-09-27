@@ -7,45 +7,32 @@
     android:layout_marginTop="20dp"
     >
     <TextView
-        android:id="@+id/loginText"
+        android:id="@+id/newPassTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your user name and password!"
+        android:text="Enter your new password!"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true">
     </TextView>
-    <EditText
-        android:id="@+id/userNameEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:textSize="10sp"
-        android:layout_below="@+id/loginText"
-        android:ems="10"
-        android:layout_centerHorizontal="true">
-        <requestFocus/>
-    </EditText>
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
         android:textSize="10sp"
-        android:layout_below="@+id/userNameEditText"
+        android:layout_below="@+id/newPassTextView"
         android:ems="10"
         android:layout_centerHorizontal="true"
-        >
+        android:paddingTop="20dp">
     </EditText>
-
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/confirmButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/passwordEditText"
         android:layout_centerHorizontal="true"
         android:text="login"
         android:textSize="15sp" />
-
 
 </RelativeLayout>
