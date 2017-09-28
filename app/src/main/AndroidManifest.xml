@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="bpaquette6801.assignment1">
+    package="bpaquette6801.assignment1" >
 
     <application
         android:allowBackup="true"
@@ -8,8 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
+        android:theme="@style/AppTheme" >
+        <activity android:name=".LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,7 +18,9 @@
         </activity>
         <activity android:name=".HomeActivity" />
         <activity android:name=".ForgotActivity" />
-        <activity android:name=".ForgotPassActivity"></activity>
+        <activity android:name=".ForgotPassActivity" />
+        <activity android:name=".EditProfileActivity" >
+        </activity>
     </application>
 
 </manifest>

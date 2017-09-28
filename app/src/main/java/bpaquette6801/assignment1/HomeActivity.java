@@ -56,6 +56,12 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
             intent.putExtras(userPass);
             startActivity(intent);
         }
+        else if (parent.getItemAtPosition(pos).toString().equals("Edit Profile")){
+            Bundle userPass = getIntent().getExtras();
+            Intent intent = new Intent(this, EditProfileActivity.class);
+            intent.putExtras(userPass);
+            startActivity(intent);
+        }
     }
 
     @Override
