@@ -28,7 +28,6 @@ public class EditProfileActivity extends AppCompatActivity implements OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-
         value2EditText = (EditText) findViewById(R.id.value2EditText);
         value1EditText = (EditText) findViewById(R.id.value1EditText);
         checkButton = (Button) findViewById(R.id.checkButton);
@@ -46,7 +45,6 @@ public class EditProfileActivity extends AppCompatActivity implements OnClickLis
             case R.id.checkButton:
                 int newValue = (Integer.parseInt(value1EditText.getText().toString()))* (Integer.parseInt(value2EditText.getText().toString()));
                 text = text + Integer.toString(newValue);
-
 
                 toast = Toast.makeText(context, text, duration);
                 toast.setGravity(Gravity.CENTER | Gravity.BOTTOM, 0, 100);
