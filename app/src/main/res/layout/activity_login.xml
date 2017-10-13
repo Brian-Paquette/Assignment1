@@ -46,6 +46,24 @@
         android:layout_centerHorizontal="true"
         android:text="login"
         android:textSize="15sp" />
+    <TextView
+        android:id="@+id/signupText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New user? Please sign up!"
+        android:layout_below="@+id/loginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:paddingTop="15dp">
+    </TextView>
+    <Button
+        android:id="@+id/signupButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/signupText"
+        android:layout_centerHorizontal="true"
+        android:text="Sign Up"
+        android:textSize="15sp" />
 
 
 </RelativeLayout>

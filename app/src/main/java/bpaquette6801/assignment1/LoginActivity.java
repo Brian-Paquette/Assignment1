@@ -19,6 +19,7 @@ import android.app.Activity;
 public class LoginActivity extends AppCompatActivity implements OnEditorActionListener ,OnClickListener {
 
     private Button loginButton;
+    private Button signupButton;
     private EditText userNameEditText;
     private EditText passwordEditText;
     private String username = "username";
@@ -31,7 +32,8 @@ public class LoginActivity extends AppCompatActivity implements OnEditorActionLi
         setContentView(R.layout.activity_login);
         loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(this);
-
+        signupButton = (Button) findViewById(R.id.signupButton);
+        signupButton.setOnClickListener(this);
 
 
         //The rest of the controls
@@ -74,6 +76,10 @@ public class LoginActivity extends AppCompatActivity implements OnEditorActionLi
                     intent.putExtras(userPass);
                     startActivity(intent);
                 }
+                break;
+            case R.id.signupButton:
+
+
                 break;
         }
 

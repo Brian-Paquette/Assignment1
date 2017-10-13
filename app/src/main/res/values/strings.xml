@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Assignment1</string>
+    <string name="app_name">MAP APP</string>
     <string-array name="planets_array">
         <item>Menu</item>
         <item>Edit Profile</item>
