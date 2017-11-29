@@ -25,20 +25,27 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
     private TextView newPassText;
     private Button forgotButton;
     private Spinner forgotSpinner;
+    private User user;
+    private AppDatabase database;
     //Bundle userPass = this.getIntent().getExtras();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        database = AppDatabase.getDatabase(getApplicationContext());
+        user = database.userDao().getAllUser().get(0);
         setContentView(R.layout.activity_home);
         sampleTextView = (TextView) findViewById(R.id.sampleText);
         //sampleTextView.append(getIntent().getExtras().getString("user"));
         newPassText = (TextView) findViewById(R.id.newPassText);
-        newPassText.append(getIntent().getExtras().getString("pass"));
+        newPassText.append(user.password);
         forgotSpinner = (Spinner) findViewById(R.id.forgotSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.planets_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         forgotSpinner.setAdapter(adapter);
         forgotSpinner.setOnItemSelectedListener(this);
+
+
 
 
         //forgotButton = (Button) findViewById(R.id.forgotButton);

@@ -1,12 +1,10 @@
 package bpaquette6801.assignment1;
 
 /**
- * Created by bpaquette6801 on 10/13/2017.
+ * Created by bpaquette6801 on 11/24/2017.
  */
 
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 @Entity
@@ -21,11 +19,11 @@ public class User {
 
 
 
-    public User(int id, String userName, String password,String firstName,String lastName) {
+    public User(int id, String userName, String password, String firstName, String lastName) {
         this.id = id;
         this.userName = userName;
-        this.password = password;
-        this.firstName  = firstName;
+        this.password  = password;
+        this.firstName = firstName;
         this.lastName = lastName;
     }
 
