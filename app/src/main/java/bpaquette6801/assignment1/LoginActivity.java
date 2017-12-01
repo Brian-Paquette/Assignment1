@@ -8,7 +8,7 @@ import android.widget.Toast;
 import android.content.Context;
 import java.text.NumberFormat;
 import java.util.List;
-
+import android.content.SharedPreferences;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,13 +27,18 @@ public class LoginActivity extends AppCompatActivity implements OnEditorActionLi
     private User user;
     private AppDatabase database;
     private String stringUser;
+    public static final String mypreference = "mypref";
+    SharedPreferences sharedpreferences;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedpreferences = getSharedPreferences(mypreference,
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
         //Setup Database
         database = AppDatabase.getDatabase(getApplicationContext());
-        database.userDao().removeAllUsers();
         //Add user
         List<User> users = database.userDao().getAllUser();
         if (users.size()==0) {
@@ -102,24 +107,11 @@ public class LoginActivity extends AppCompatActivity implements OnEditorActionLi
                     toast.setGravity(Gravity.CENTER | Gravity.BOTTOM, 0, 100);
                     toast.show();
                 }
-//                if(!userNameString.equals("username")){
-//                    text = "Login Failed - Invalid Username";
-//                    toast = Toast.makeText(context, text, duration);
-//                    toast.setGravity(Gravity.CENTER | Gravity.BOTTOM, 0, 100);
-//                    toast.show();
-//                }
-
-//                else if(!passwordString.equals("password")){
-//                    text = "Login Failed - Invalid Password";
-//                    toast = Toast.makeText(context, text, duration);
-//                    toast.setGravity(Gravity.CENTER | Gravity.BOTTOM, 0, 100);
-//                    toast.show();
-//                }
 
                 break;
             case R.id.signupButton:
-
-
+                Intent intent = new Intent(this, SignupActivity.class);
+                startActivity(intent);
 
                 break;
         }

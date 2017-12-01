@@ -40,7 +40,7 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
         newPassText = (TextView) findViewById(R.id.newPassText);
         newPassText.append(user.password);
         forgotSpinner = (Spinner) findViewById(R.id.forgotSpinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.planets_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.menu_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         forgotSpinner.setAdapter(adapter);
         forgotSpinner.setOnItemSelectedListener(this);
