@@ -27,6 +27,9 @@ public interface UserDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateUser(User user);
 
+    @Query("delete from user where username = :userName")
+    void deleteOne(String userName);
+
     @Query("delete from user")
     void removeAllUsers();
 }

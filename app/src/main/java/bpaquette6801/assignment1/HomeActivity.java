@@ -1,6 +1,7 @@
 package bpaquette6801.assignment1;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -27,13 +28,22 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
     private Spinner forgotSpinner;
     private User user;
     private AppDatabase database;
+    public static final String mypreference = "mypref";
+    SharedPreferences sharedpreferences;
+
     //Bundle userPass = this.getIntent().getExtras();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        sharedpreferences = getSharedPreferences(mypreference,
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+
+
+
         super.onCreate(savedInstanceState);
         database = AppDatabase.getDatabase(getApplicationContext());
-        user = database.userDao().getAllUser().get(0);
+        user = (User) database.userDao().getUser(sharedpreferences.getString("current",""));
         setContentView(R.layout.activity_home);
         sampleTextView = (TextView) findViewById(R.id.sampleText);
         //sampleTextView.append(getIntent().getExtras().getString("user"));

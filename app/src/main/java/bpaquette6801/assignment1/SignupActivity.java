@@ -19,6 +19,7 @@ import android.widget.TextView.OnEditorActionListener;
 import android.app.Activity;
 
 public class SignupActivity extends AppCompatActivity implements OnClickListener {
+
     private AppDatabase database;
     private User user;
     private Button confirmButton;
@@ -26,6 +27,7 @@ public class SignupActivity extends AppCompatActivity implements OnClickListener
     private EditText lastNameEditText;
     private EditText userNameEditText;
     private EditText passwordEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +35,7 @@ public class SignupActivity extends AppCompatActivity implements OnClickListener
 
         database = AppDatabase.getDatabase(getApplicationContext());
 
-        confirmButton = (Button) findViewById(R.id.loginButton);
+        confirmButton = (Button) findViewById(R.id.confirmButton);
         confirmButton.setOnClickListener(this);
 
         firstNameEditText = (EditText) findViewById(R.id.firstNameEditText);
@@ -47,24 +49,22 @@ public class SignupActivity extends AppCompatActivity implements OnClickListener
 
         switch (v.getId()) {
             case R.id.confirmButton:
-                Context context = getApplicationContext();
-                Toast toast;
-                int duration = Toast.LENGTH_SHORT;
 
                 List<User> users = database.userDao().getAllUser();
+                for (int i=0; i<users.size();i++){
+                    User user = database.userDao().getAllUser().get(i);
+                    if (user.userName.equals(userNameEditText.getText().toString())){
+                        Toast.makeText(this, String.valueOf("User already exists, please try a different username"), Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        database.userDao().addUser(new User(users.size()+1, userNameEditText.getText().toString(),passwordEditText.getText().toString(),
+                                firstNameEditText.getText().toString(),lastNameEditText.getText().toString()));
+                        user = database.userDao().getAllUser().get(users.size());
+                        Intent intent = new Intent(this, LoginActivity.class);
+                        startActivity(intent);
+                    }
+                }
 
-                if (users.contains(userNameEditText.getText().toString())){
-                    String text = "User creation failed, user already exists";
-                    toast = Toast.makeText(context, text, duration);
-                    toast.setGravity(Gravity.CENTER | Gravity.BOTTOM, 0, 100);
-                    toast.show();
-                }
-                else{
-                    database.userDao().addUser(new User(users.size()+1, userNameEditText.getText().toString(),passwordEditText.getText().toString(),
-                            firstNameEditText.getText().toString(),lastNameEditText.getText().toString()));
-                    user = database.userDao().getAllUser().get(users.size());
-                    Toast.makeText(this, String.valueOf(user.id +" "+ user.userName +" "+ user.password), Toast.LENGTH_SHORT).show();
-                }
 
 
 
@@ -73,5 +73,5 @@ public class SignupActivity extends AppCompatActivity implements OnClickListener
         }
 
     }
-    
+
 }

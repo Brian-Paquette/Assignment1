@@ -34,13 +34,18 @@ public class LoginActivity extends AppCompatActivity implements OnEditorActionLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sharedpreferences = getSharedPreferences(mypreference,
-                Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedpreferences.edit();
+
         //Setup Database
         database = AppDatabase.getDatabase(getApplicationContext());
         //Add user
         List<User> users = database.userDao().getAllUser();
+        if (users.size()==0) {
+            database.userDao().addUser(new User(1, "Azuraith","test","Brian","Paquette"));
+            user = database.userDao().getAllUser().get(0);
+            Toast.makeText(this, String.valueOf(user.id +" "+ user.userName +" "+ user.password), Toast.LENGTH_SHORT).show();
+        }
+
+        List<Status> status = database.statusDao().getAllStatus();
         if (users.size()==0) {
             database.userDao().addUser(new User(1, "Azuraith","test","Brian","Paquette"));
             user = database.userDao().getAllUser().get(0);
@@ -68,6 +73,10 @@ public class LoginActivity extends AppCompatActivity implements OnEditorActionLi
         switch (v.getId()) {
             case R.id.loginButton:
 
+                sharedpreferences = getSharedPreferences(mypreference,
+                        Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+
                 Context context = getApplicationContext();
                 int duration = Toast.LENGTH_SHORT;
                 String text = "null";
@@ -89,6 +98,8 @@ public class LoginActivity extends AppCompatActivity implements OnEditorActionLi
                         toast.show();
                     }
                     else{
+                        editor.putString("current",user.userName);
+                        editor.commit();
                         text = "SUCCESS";
                         toast = Toast.makeText(context, text, duration);
                         toast.setGravity(Gravity.CENTER | Gravity.BOTTOM, 0, 100);
