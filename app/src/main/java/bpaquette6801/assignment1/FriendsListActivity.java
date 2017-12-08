@@ -19,7 +19,7 @@ public class FriendsListActivity extends AppCompatActivity {
         private User user;
         private Friend friend;
         public static final String mypreference = "mypref";
-        private List<Friend> friendsList;
+        private List<Friend> listOfFriends;
         SharedPreferences sharedpreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,21 +31,18 @@ public class FriendsListActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedpreferences.edit();
         database = AppDatabase.getDatabase(getApplicationContext());
         friends_List = (ListView) findViewById(R.id.friends_list);
-
+        database.friendDao().removeAllFriends();
         List<Friend> friends = database.friendDao().getAllFriends();
 
         if (friends.size()==0) {
             database.friendDao().addFriend(new Friend(1,"Azuraith","BlueBarren"));
-            database.friendDao().addFriend(new Friend(1,"Azuraith","xGene"));
-            database.friendDao().addFriend(new Friend(1,"Azuraith","RyceKryspies"));
+            database.friendDao().addFriend(new Friend(2,"Azuraith","xGene"));
+            database.friendDao().addFriend(new Friend(3,"Azuraith","RyceKryspies"));
         }
 
-        friendsList = database.friendDao().getFriendsForUser(sharedpreferences.getString("current",""));
-        Friend[] friendArray = new Friend[friendsList.size()];
-        for(int i = 0; i < friendsList.size(); i++){
-            friendArray[i] = friendsList.get(i).friendName;
-        }
+        listOfFriends = database.friendDao().getFriendsForUser(sharedpreferences.getString("current",""));
 
+        String[] friendArray = new String[]{listOfFriends.get(0).friendName,listOfFriends.get(1).friendName,listOfFriends.get(2).friendName };
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, friendArray);
         friends_List.setAdapter(adapter);
