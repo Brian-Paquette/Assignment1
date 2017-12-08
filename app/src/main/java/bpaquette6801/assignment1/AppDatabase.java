@@ -12,7 +12,7 @@ package bpaquette6801.assignment1;
     import android.arch.persistence.room.Room;
     import android.arch.persistence.room.RoomDatabase;
 
-@Database(entities = {User.class,Status.class}, version = 16, exportSchema = false)
+@Database(entities = {User.class,Status.class,Friend.class}, version = 16, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
@@ -20,6 +20,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
 
     public abstract StatusDao statusDao();
+
+    public abstract FriendDao friendDao();
 
     public static AppDatabase getDatabase(Context context) {
         if (INSTANCE == null) {

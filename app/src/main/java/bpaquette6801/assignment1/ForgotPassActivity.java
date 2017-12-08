@@ -69,8 +69,9 @@ public class ForgotPassActivity extends AppCompatActivity implements OnClickList
                     String password = passwordEditText.getText().toString();
                     String firstName = user.firstName;
                     String lastName = user.lastName;
+                    String status = user.onlineStatus;
                     database.userDao().deleteOne(sharedpreferences.getString("current",""));
-                    database.userDao().addUser(new User(id, userName,password,firstName,lastName));
+                    database.userDao().addUser(new User(id, userName,password,firstName,lastName,status));
                     text = "SUCCESS";
                     toast = Toast.makeText(context, text, duration);
                     toast.setGravity(Gravity.CENTER | Gravity.BOTTOM, 0, 100);

@@ -58,7 +58,7 @@ public class SignupActivity extends AppCompatActivity implements OnClickListener
                     }
                     else{
                         database.userDao().addUser(new User(users.size()+1, userNameEditText.getText().toString(),passwordEditText.getText().toString(),
-                                firstNameEditText.getText().toString(),lastNameEditText.getText().toString()));
+                                firstNameEditText.getText().toString(),lastNameEditText.getText().toString(),"online"));
                         user = database.userDao().getAllUser().get(users.size());
                         Intent intent = new Intent(this, LoginActivity.class);
                         startActivity(intent);

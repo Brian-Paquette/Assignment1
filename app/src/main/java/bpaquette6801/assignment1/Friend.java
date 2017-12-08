@@ -8,15 +8,21 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 @Entity
-public class Status {
+public class Friend {
 
     @PrimaryKey
     public final int id;
-    public String name;
+    public String userName;
+    public String friendName;
 
-    public Status(int id, String name) {
+
+
+
+    public Friend(int id, String userName, String friendName) {
         this.id = id;
-        this.name = name;
+        this.userName = userName;
+        this.friendName  = friendName;
+
     }
 
 }

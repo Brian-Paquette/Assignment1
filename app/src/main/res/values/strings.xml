@@ -2,7 +2,7 @@
     <string name="app_name">MAP APP</string>
     <string-array name="menu_array">
         <item>Menu</item>
-        <item>Edit Profile</item>
+        <item>Friends List</item>
         <item>Forgot Password</item>
     </string-array>
 </resources>

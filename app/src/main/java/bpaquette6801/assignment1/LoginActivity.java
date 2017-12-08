@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity implements OnEditorActionLi
     private EditText userNameEditText;
     private EditText passwordEditText;
     private User user;
+    private Status status;
     private AppDatabase database;
     private String stringUser;
     public static final String mypreference = "mypref";
@@ -37,20 +38,24 @@ public class LoginActivity extends AppCompatActivity implements OnEditorActionLi
 
         //Setup Database
         database = AppDatabase.getDatabase(getApplicationContext());
+        database.userDao().removeAllUsers();
         //Add user
         List<User> users = database.userDao().getAllUser();
-        if (users.size()==0) {
-            database.userDao().addUser(new User(1, "Azuraith","test","Brian","Paquette"));
-            user = database.userDao().getAllUser().get(0);
-            Toast.makeText(this, String.valueOf(user.id +" "+ user.userName +" "+ user.password), Toast.LENGTH_SHORT).show();
-        }
 
         List<Status> status = database.statusDao().getAllStatus();
         if (users.size()==0) {
-            database.userDao().addUser(new User(1, "Azuraith","test","Brian","Paquette"));
-            user = database.userDao().getAllUser().get(0);
-            Toast.makeText(this, String.valueOf(user.id +" "+ user.userName +" "+ user.password), Toast.LENGTH_SHORT).show();
+            database.statusDao().addStatus(new Status(1,"online"));
+            database.statusDao().addStatus(new Status(2,"offline"));
+            database.statusDao().addStatus(new Status(3,"busy"));
         }
+
+        if (users.size()==0) {
+            database.userDao().addUser(new User(1, "Azuraith","test","Brian","Paquette","online"));
+            user = database.userDao().getAllUser().get(0);
+            Toast.makeText(this, String.valueOf(user.id +" "+ user.userName +" "+ user.password + " " + user.onlineStatus), Toast.LENGTH_SHORT).show();
+        }
+
+
 
         //to be userd later???? updateFirstUserData();
 

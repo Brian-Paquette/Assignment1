@@ -31,7 +31,8 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
     public static final String mypreference = "mypref";
     SharedPreferences sharedpreferences;
 
-    //Bundle userPass = this.getIntent().getExtras();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -46,9 +47,8 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
         user = (User) database.userDao().getUser(sharedpreferences.getString("current",""));
         setContentView(R.layout.activity_home);
         sampleTextView = (TextView) findViewById(R.id.sampleText);
-        //sampleTextView.append(getIntent().getExtras().getString("user"));
         newPassText = (TextView) findViewById(R.id.newPassText);
-        newPassText.append(user.password);
+        newPassText.append(user.password + " and you are: " + user.onlineStatus);
         forgotSpinner = (Spinner) findViewById(R.id.forgotSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.menu_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -68,15 +68,11 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
         if (parent.getItemAtPosition(pos).toString().equals("Forgot Password")){
-            Bundle userPass = getIntent().getExtras();
             Intent intent = new Intent(this, ForgotPassActivity.class);
-            intent.putExtras(userPass);
             startActivity(intent);
         }
-        else if (parent.getItemAtPosition(pos).toString().equals("Edit Profile")){
-            Bundle userPass = getIntent().getExtras();
-            Intent intent = new Intent(this, EditProfileActivity.class);
-            intent.putExtras(userPass);
+        else if (parent.getItemAtPosition(pos).toString().equals("Friends List")){
+            Intent intent = new Intent(this, FriendsListActivity.class);
             startActivity(intent);
         }
     }

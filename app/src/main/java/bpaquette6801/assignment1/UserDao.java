@@ -1,12 +1,12 @@
 package bpaquette6801.assignment1;
 
-    import android.arch.persistence.room.Dao;
-    import android.arch.persistence.room.Insert;
-    import android.arch.persistence.room.OnConflictStrategy;
-    import android.arch.persistence.room.Query;
-    import android.arch.persistence.room.Update;
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
+import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
-    import java.util.List;
+import java.util.List;
 
 
 @Dao
@@ -29,6 +29,9 @@ public interface UserDao {
 
     @Query("delete from user where username = :userName")
     void deleteOne(String userName);
+
+    @Query("select onlineStatus from user where userName = :userName")
+    public String getStatusOfUser(String userName);
 
     @Query("delete from user")
     void removeAllUsers();
