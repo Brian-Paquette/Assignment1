@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    >
+
+    <Button
+        android:id="@+id/downloadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click me to laugh!"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp">
+    </Button>
+
+    <TextView
+        android:id="@+id/helpText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="For more help! Use these buttons"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/downloadButton">
+    </TextView>
+
+    <Button
+        android:id="@+id/websiteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Visit our website!"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/helpText">
+    </Button>
+    <Button
+        android:id="@+id/callButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Call Us!"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/websiteButton">
+    </Button>
+
+    <ImageView
+        android:id="@+id/downloadImage"
+        android:layout_width="400dp"
+        android:layout_height="300dp"
+        android:layout_below="@+id/callButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp" />
+
+
+</RelativeLayout>

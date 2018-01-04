@@ -4,5 +4,6 @@
         <item>Menu</item>
         <item>Friends List</item>
         <item>Forgot Password</item>
+        <item>About Us</item>
     </string-array>
 </resources>

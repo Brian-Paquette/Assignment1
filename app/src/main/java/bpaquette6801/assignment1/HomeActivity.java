@@ -75,6 +75,10 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
             Intent intent = new Intent(this, FriendsListActivity.class);
             startActivity(intent);
         }
+        else if (parent.getItemAtPosition(pos).toString().equals("About Us")){
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
