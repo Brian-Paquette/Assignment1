@@ -33,19 +33,19 @@ public class FriendsListActivity extends AppCompatActivity {
         friends_List = (ListView) findViewById(R.id.friends_list);
         database.friendDao().removeAllFriends();
         List<Friend> friends = database.friendDao().getAllFriends();
-
+        user = (User) database.userDao().getUser(sharedpreferences.getString("current",""));
         if (friends.size()==0) {
-            database.friendDao().addFriend(new Friend(1,"Brian","BlueBarren"));
-            database.friendDao().addFriend(new Friend(2,"Brian","xGene"));
-            database.friendDao().addFriend(new Friend(3,"Brian","RyceKryspies"));
-            database.friendDao().addFriend(new Friend(4,"Brian","Dude"));
-            database.friendDao().addFriend(new Friend(5,"Brian","Bro"));
-            database.friendDao().addFriend(new Friend(6,"Brian","Guy"));
-            database.friendDao().addFriend(new Friend(7,"Brian","Gal"));
-            database.friendDao().addFriend(new Friend(8,"Brian","Girl"));
-            database.friendDao().addFriend(new Friend(9,"Brian","Man"));
-            database.friendDao().addFriend(new Friend(10,"Brian","Person"));
-            database.friendDao().addFriend(new Friend(11,"Brian","People"));
+            database.friendDao().addFriend(new Friend(1,user.userName,"BlueBarren"));
+            database.friendDao().addFriend(new Friend(2,user.userName,"xGene"));
+            database.friendDao().addFriend(new Friend(3,user.userName,"RyceKryspies"));
+            database.friendDao().addFriend(new Friend(4,user.userName,"Dude"));
+            database.friendDao().addFriend(new Friend(5,user.userName,"Bro"));
+            database.friendDao().addFriend(new Friend(6,user.userName,"Guy"));
+            database.friendDao().addFriend(new Friend(7,user.userName,"Gal"));
+            database.friendDao().addFriend(new Friend(8,user.userName,"Girl"));
+            database.friendDao().addFriend(new Friend(9,user.userName,"Man"));
+            database.friendDao().addFriend(new Friend(10,user.userName,"Person"));
+            database.friendDao().addFriend(new Friend(11,user.userName,"People"));
 
         }
 
