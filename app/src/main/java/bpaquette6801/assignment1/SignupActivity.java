@@ -43,13 +43,13 @@ public class SignupActivity extends AppCompatActivity implements OnClickListener
         userNameEditText = (EditText) findViewById(R.id.userNameEditText);
         passwordEditText = (EditText) findViewById(R.id.passwordEditText);
 
+        Toast.makeText(this, String.valueOf("User already exists, please try a different username"), Toast.LENGTH_SHORT).show();
     }
 
     public void onClick(View v) {
 
         switch (v.getId()) {
             case R.id.confirmButton:
-
                 List<User> users = database.userDao().getAllUser();
                 for (int i=0; i<users.size();i++){
                     User user = database.userDao().getAllUser().get(i);

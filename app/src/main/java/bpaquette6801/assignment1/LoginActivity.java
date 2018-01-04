@@ -38,21 +38,22 @@ public class LoginActivity extends AppCompatActivity implements OnEditorActionLi
 
         //Setup Database
         database = AppDatabase.getDatabase(getApplicationContext());
-        database.userDao().removeAllUsers();
         //Add user
         List<User> users = database.userDao().getAllUser();
 
         List<Status> status = database.statusDao().getAllStatus();
-        if (users.size()==0) {
+        if (status.size()==0) {
             database.statusDao().addStatus(new Status(1,"online"));
             database.statusDao().addStatus(new Status(2,"offline"));
             database.statusDao().addStatus(new Status(3,"busy"));
         }
 
+
         if (users.size()==0) {
-            database.userDao().addUser(new User(1, "Azuraith","test","Brian","Paquette","online"));
-            user = database.userDao().getAllUser().get(0);
-            Toast.makeText(this, String.valueOf(user.id +" "+ user.userName +" "+ user.password + " " + user.onlineStatus), Toast.LENGTH_SHORT).show();
+            database.userDao().addUser(new User(users.size() + 1, "Azuraith", "test",
+                    "Brian", "Paquette", "online"));
+
+
         }
 
 

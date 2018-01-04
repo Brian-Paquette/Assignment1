@@ -35,14 +35,30 @@ public class FriendsListActivity extends AppCompatActivity {
         List<Friend> friends = database.friendDao().getAllFriends();
 
         if (friends.size()==0) {
-            database.friendDao().addFriend(new Friend(1,"Azuraith","BlueBarren"));
-            database.friendDao().addFriend(new Friend(2,"Azuraith","xGene"));
-            database.friendDao().addFriend(new Friend(3,"Azuraith","RyceKryspies"));
+            database.friendDao().addFriend(new Friend(1,"Brian","BlueBarren"));
+            database.friendDao().addFriend(new Friend(2,"Brian","xGene"));
+            database.friendDao().addFriend(new Friend(3,"Brian","RyceKryspies"));
+            database.friendDao().addFriend(new Friend(4,"Brian","Dude"));
+            database.friendDao().addFriend(new Friend(5,"Brian","Bro"));
+            database.friendDao().addFriend(new Friend(6,"Brian","Guy"));
+            database.friendDao().addFriend(new Friend(7,"Brian","Gal"));
+            database.friendDao().addFriend(new Friend(8,"Brian","Girl"));
+            database.friendDao().addFriend(new Friend(9,"Brian","Man"));
+            database.friendDao().addFriend(new Friend(10,"Brian","Person"));
+            database.friendDao().addFriend(new Friend(11,"Brian","People"));
+
         }
 
         listOfFriends = database.friendDao().getFriendsForUser(sharedpreferences.getString("current",""));
 
-        String[] friendArray = new String[]{listOfFriends.get(0).friendName,listOfFriends.get(1).friendName,listOfFriends.get(2).friendName };
+        String[] friendArray = new String[]{listOfFriends.get(0).friendName,listOfFriends.get(1).friendName,listOfFriends.get(2).friendName,listOfFriends.get(3).friendName
+                ,listOfFriends.get(4).friendName
+                ,listOfFriends.get(5).friendName
+                ,listOfFriends.get(6).friendName
+                ,listOfFriends.get(7).friendName
+                ,listOfFriends.get(8).friendName
+                ,listOfFriends.get(9).friendName
+                ,listOfFriends.get(10).friendName};
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, friendArray);
         friends_List.setAdapter(adapter);
